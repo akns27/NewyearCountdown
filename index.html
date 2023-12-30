@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Year Countdown!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id = "countdown-text">💙New Year Countdown🐉</div>
+    <div id ="countdown"></div>
+    <div id ="message"></div>
+
+    
+
+    <script>
+
+        const newYearDate = new Date('January 1, 2024 00:00:00 GMT+0900');
+
+
+        function updateCountdown() {
+            const currentDate = new Date();
+            const timeDifference = newYearDate - currentDate;
+
+            if (timeDifference <= 0) {
+                document.getElementById('countdown').innerHTML = ' Happy New Year!<br> 새해 복 많이 받으세요!';
+                document.getElementById('message').innerHTML = '';
+            } else {
+                const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDifference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+                document.getElementById('countdown').innerHTML = `${days}일 ${hours}시간 ${minutes}분 ${seconds}초`;
+                document.getElementById('message').innerHTML = '';
+            }
+            
+        }
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+    </script>
+
+</body>
+</html>
